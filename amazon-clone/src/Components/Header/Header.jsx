@@ -31,10 +31,10 @@ function Header() {
 
           {/* search */}
           <div className={classes.search}>
-            <select name="" id="">
+            <select name="" id="name_all">
               <option value="">All</option>
             </select>
-            <input type="text" name="" id="" placeholder="search Amazon" />
+            <input type="text" name="" id="name_sear" placeholder="search Amazon" />
             <BsSearch size={25} />
           </div>
 
@@ -43,7 +43,7 @@ function Header() {
           <div className={classes.order__container}>
             <a href="" className={classes.language}>
               <img src={flag} alt="America flag" />
-              <select name="" id="">
+              <select name="" id="name_lan">
                 <option value="">EN</option>
               </select>
             </a>
