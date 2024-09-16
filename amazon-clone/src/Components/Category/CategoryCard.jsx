@@ -4,19 +4,17 @@ import classes from "./category.module.css"
 
 function CategoryCard({data}) {
   return (
-
-    <div className={classes.category}>
-        
+    <>
+      <div className={classes.category}>
         <a href="">
-
-            <span>
-                <h2>{data.title}</h2>
-            </span>
-            <img src={data.image} alt="" />
-            <p>shop now</p>
+          <span>
+            <h2>{data.title}</h2>
+          </span>
+          <img src={data.image} alt="" />
+          <p>shop now</p>
         </a>
-        
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -11,7 +11,7 @@ function Category() {
     <section className={classes.category__container}>
     
    {
-    categoryInfos.map((infos)=>(
+    categoryInfos?.map((infos)=>(
         <CategoryCard data = {infos}/>
     ))
 
