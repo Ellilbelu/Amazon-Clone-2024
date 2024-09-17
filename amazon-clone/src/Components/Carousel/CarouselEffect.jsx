@@ -15,7 +15,7 @@ function CarouselEffect() {
       >
         {
         img.map((imageitems, index) => {
-          return <img key={index} src={imageitems} />;
+          return <img src={imageitems} key={index}/>;
         })}
       </Carousel>
       <div className={classes.hero__img}></div>
