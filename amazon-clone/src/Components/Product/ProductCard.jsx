@@ -17,10 +17,10 @@ function ProductCard({ product }) {
         <div className={classes.rating}>
           {/* rating */}
 
-          <Rating value={rating.rate} precision={0.1} />
+          <Rating value={rating?.rate} precision={0.1} />
 
           {/* count */}
-          <small>{rating.count}</small>
+          <small>{rating?.count}</small>
         </div>
         <div>
           {/* price */}
