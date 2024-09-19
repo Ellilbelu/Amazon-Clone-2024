@@ -4,27 +4,19 @@ import CurrencyFormat from "../Currency Format/CurrencyFormat";
 import classes from "./product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../Data Provider/DataProvider";
-import {Type} from '../../Utility/action.type'
+import { Type } from "../../Utility/action.type";
 
-
-
-function ProductCard({ product, flex, renderDesc }) {
+function ProductCard({ product, flex, renderDesc, renderAdd }) {
   const { image, title, id, rating, price, description } = product;
 
+  const [state, dispatch] = useContext(DataContext);
 
-  const [state, dispatch] = useContext(DataContext)
-  
-
-  const addToCart = ()=>{
+  const addToCart = () => {
     dispatch({
       type: Type.ADD_TO_BASKET,
       item: { image, title, id, rating, price, description },
     });
-  }
-
-
-
-
+  };
 
   return (
     <div
@@ -37,7 +29,7 @@ function ProductCard({ product, flex, renderDesc }) {
       </Link>
       <div>
         <h3>{title}</h3>
-        {renderDesc && <div style={{maxWidth:"750px"}}>{description}</div>}
+        {renderDesc && <div style={{ maxWidth: "750px" }}>{description}</div>}
         <div className={classes.rating}>
           {/* rating */}
 
@@ -52,7 +44,11 @@ function ProductCard({ product, flex, renderDesc }) {
         </div>
 
         {/* button */}
-        <button className={classes.button} onClick={addToCart}>add to cart</button>
+        {renderAdd && (
+          <button className={classes.button} onClick={addToCart}>
+            add to cart
+          </button>
+        )}
       </div>
     </div>
   );

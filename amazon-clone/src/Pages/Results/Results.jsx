@@ -30,7 +30,6 @@ function Results() {
   }, []);
 
   return (
-    
     <LayOut>
       <section>
         <h1 style={{ padding: "30px" }}>Results</h1>
@@ -38,10 +37,12 @@ function Results() {
         <hr />
       </section>
 
-      {isLoading ? (<Loader />) : (
+      {isLoading ? (
+        <Loader />
+      ) : (
         <div className={classes.products_container}>
           {results?.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} renderAdd={true} />
           ))}
         </div>
       )}

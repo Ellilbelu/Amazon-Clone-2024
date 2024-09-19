@@ -26,13 +26,19 @@ useEffect(() =>{
 
   return (
     <>
-
-    {isLoading ? (<Loader/>) : (<section className={classes.products_container}>
-        {products?.map((singleProduct) => (
-          <ProductCard product={singleProduct} key={singleProduct.id} />
-        ))}
-      </section>)}
-      
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <section className={classes.products_container}>
+          {products?.map((singleProduct) => (
+            <ProductCard
+              renderAdd={true}
+              product={singleProduct}
+              key={singleProduct.id}
+            />
+          ))}
+        </section>
+      )}
     </>
   );
 }
