@@ -176,3 +176,25 @@
     border-radius: 3px;
     padding: 5px;
 }
+
+@media screen and (max-width: 576px){
+    .header__container{
+        display: flex;
+        flex-direction: column !important;
+        height: auto;
+    }
+
+    .lower__container ul li:not(:first-child){
+        display: none;
+    }
+
+    .language{
+        display: none;
+    }
+
+    .lower__container div {
+    display:none ;
+}
+}
+    
+
