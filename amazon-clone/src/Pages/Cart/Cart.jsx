@@ -9,14 +9,34 @@ import { DataContext } from '../../Components/Data Provider/DataProvider';
 import { useContext } from 'react';
 import CurrencyFormat from '../../Components/Currency Format/CurrencyFormat';
 import { Link } from 'react-router-dom';
+import { Type } from '../../Utility/action.type';
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 
 function Cart() {
 
-  const [{basket,user}, dispatch] = useContext(DataContext)
+  const [{basket,user}, dispatch] = useContext(DataContext);
   const total = basket.reduce((amount,item)=>{
-    return item.price + amount
-  }, 0)
+
+    return item.price * item.amount + amount
+  },0)
+
+  console.log(basket)
+
+  const increment = (item)=>{
+    dispatch({
+      type:Type.ADD_TO_BASKET,
+      item
+    })
+  }
+  const decrement = (id)=>{
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id
+    })
+  }
+
 
   return (
     <LayOut>
@@ -27,7 +47,33 @@ function Cart() {
               <hr />
               {
                 basket?.length==0?(<p>Sorry! No item in your cart</p>):(basket?.map((item,i)=>{
-                  return <ProductCard key={i} product ={item} renderDesc={true} flex ={true} renderAdd={false}/>
+                  return (
+                    <section className={classes.cart_product}>
+                      <ProductCard
+                        key={i}
+                        product={item}
+                        renderDesc={true}
+                        flex={true}
+                        renderAdd={false}
+                      />
+                      <div className={classes.btn_container}>
+                        <button
+                          className={classes.btn}
+                          onClick={() => increment(item)}
+                        >
+                          <IoIosArrowUp size={20} />
+                        </button>
+                        <span>{item.amount}</span>
+                        <button
+                          className={classes.btn}
+                          onClick={() => decrement(item.id)}
+                        >
+                          <IoIosArrowDown size={20} />
+                        </button>
+                      </div>
+                    </section>
+                  );
+                  
                 })
               )
               }
