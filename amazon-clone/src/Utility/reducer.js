@@ -2,12 +2,15 @@
 import {Type} from './action.type'
 
 export const initialState = {
-    basket:[]
+    basket:[],
+    user: null
 }
 
 
 export const reducer = (state,action)=>{
     switch (action.type) {
+
+        //add item to the basket
         case Type.ADD_TO_BASKET:
             // check if the item exists
 
@@ -28,7 +31,7 @@ export const reducer = (state,action)=>{
                 }
             }
 
-
+         //to remove items from the basket
             case Type.REMOVE_FROM_BASKET :
                 const index = state.basket.findIndex(item=> item.id===action.id)
                 let newBasket = [...state.basket]
@@ -38,14 +41,20 @@ export const reducer = (state,action)=>{
                         newBasket[index] = {...newBasket[index],amount:newBasket[index].amount-1}
                     }else{
                         newBasket.splice(index,1)
-                    }
+                    } 
                 }
 
                  return {
                    ...state,
                    basket: newBasket,
                  }
-    
+    // to sign up new user
+
+                case Type.SET_USER:
+                    return {
+                        ...state,
+                        user: action.user,
+                    }
         default:
             return state;
     }
