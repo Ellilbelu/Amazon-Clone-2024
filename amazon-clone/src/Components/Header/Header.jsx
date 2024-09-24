@@ -69,11 +69,11 @@ const totalItem = basket?.reduce((amount,item)=>{
                   {user ? (
                     <>
                       <p>Hello, {user?.email?.split("@")[0]}</p>
-                      <span onClick={()=>auth.signOut()}>Sign Out</span>
+                      <span onClick={()=> auth.signOut()}>Sign Out</span>
                     </>
                   ) : (
                     <>
-                      <p>Hello, sign in</p>
+                      <p>Hello, Sign in</p>
                       <span>Account & Lists</span>
                     </>
                   )}
