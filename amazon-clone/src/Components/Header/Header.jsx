@@ -52,7 +52,7 @@ const totalItem = basket?.reduce((amount,item)=>{
                 id="name_sear"
                 placeholder="search Amazon"
               />
-              <BsSearch size={25} />
+              <BsSearch size={38} />
             </div>
 
             {/* right side link */}
